@@ -1,0 +1,20 @@
+<Window x:Class="MilBD.Search"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:MilBD"
+        mc:Ignorable="d"
+        Title="Пошук" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <TextBox x:Name="InputTextBox" Width="200" Margin="10" />
+            <ListBox x:Name="SuggestionsListBox" Width="200" Margin="10" />
+            <Button x:Name="Button" Content="Пошук" FontSize="15" Width="100" Height="30"
+                    Background="Bisque" 
+                    Foreground="Black" 
+                    BorderThickness="2" 
+                    BorderBrush="Bisque" Click="Search_Click"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

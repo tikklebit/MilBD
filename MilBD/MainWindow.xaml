@@ -1,37 +1,45 @@
 ﻿<Window x:Class="MilBD.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MilBD" Height="200" Width="600">
+        Title="MilBD" Height="500" Width="400">
     <Grid Margin="10">
-    
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+        <TextBlock Text="Ласкаво просимо" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10, 0, 0, 0"></TextBlock>
+        <Button Grid.Row="1" Content="Вказати ТЦК" FontSize="15" Background="Bisque" 
+                Foreground="Black" 
+                BorderThickness="2" 
+                BorderBrush="Bisque" 
+                Margin="30,0,30,30" Click="CreateMil_Click"></Button>
         
-        <Label Grid.Column="1">Names</Label>
+        <Button Grid.Row="2" Content="Новий призовник" FontSize="15"
+                Background="Bisque" 
+                Foreground="Black" 
+                BorderThickness="2" 
+                BorderBrush="Bisque" 
+                Margin="30,0,30,30" Click="CreateSold_Click"></Button>
         
-        <ListBox Grid.Row="1" x:Name="N"></ListBox>
+        <Button Grid.Row="3" Content="Новий офіцер" FontSize="15"
+                Background="Bisque" 
+                Foreground="Black" 
+                BorderThickness="2" 
+                BorderBrush="Bisque" 
+                Margin="30,0,30,30" Click="CreateOfficer_Click"></Button>
+            
+        <Button Grid.Row="4" Content="Пошук" FontSize="15"
+                Background="Bisque" 
+                Foreground="Black" 
+                BorderThickness="2" 
+                BorderBrush="Bisque" 
+                Margin="30,0,30,30" Click="Search_Click"></Button>
         
-        <StackPanel Grid.Row="1" Grid.Column="1" Margin="5,0,0,0">
-            <TextBox x:Name="text"></TextBox>
-            <Button x:Name="button" Margin="0,5,0,0" Click="ButtonWrite">Write</Button>
-        </StackPanel>
-        
-        <Label Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right">SendNames</Label>
-        
-        <StackPanel Grid.Row="2" Grid.Column="2" Margin="5,0,5,0">
-            <TextBox x:Name="text2"></TextBox>
-            <Button x:Name="button2" Margin="0,5,0,0" Click="ButtonSend">Read</Button>
-        </StackPanel>
-        
-        <ListBox Grid.Row="1" Grid.Column="3" x:Name="X"></ListBox>
+        <TextBlock Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Right">Створено студентом К-313 групи
+        | Ваюта І. А.</TextBlock>
     </Grid>
 </Window>

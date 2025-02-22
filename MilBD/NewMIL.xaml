@@ -1,0 +1,50 @@
+<Window x:Class="MilBD.NewMIL"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:MilBD"
+        mc:Ignorable="d"
+        Title="ТЦК" Height="390" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            
+            <RowDefinition Height="40"></RowDefinition>
+            
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Новий об'єкт ТЦК" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"></TextBlock>
+        
+        <TextBlock Text="Введіть місто" FontSize="20" Grid.Row="1" Grid.ColumnSpan="3" Margin="5, 0, 5, 0"></TextBlock>
+        <TextBox x:Name="City" Grid.Row="2" Grid.Column="0" Text="Місто..." Grid.ColumnSpan="3" FontSize="15" TextAlignment="Center" Margin="5, 0, 5, 0"></TextBox>
+        
+        <TextBlock Text="Введіть адресу" FontSize="20" Grid.Row="3" Grid.ColumnSpan="3" Margin="5, 0, 5, 0"></TextBlock>
+        <TextBox x:Name="Street" Grid.Row="4" Grid.Column="0" Text="Вулиця..." Grid.ColumnSpan="2" FontSize="15" TextAlignment="Center" Margin="5, 0, 5, 0"></TextBox>
+        <TextBox x:Name="Number" Grid.Row="4" Grid.Column="2" Text="Номер..." FontSize="15" TextAlignment="Center" Margin="5, 0, 5, 0"></TextBox>
+        
+        <TextBlock Text="Введіть ПІБ майора" FontSize="20" Grid.Row="5" Grid.ColumnSpan="3" Margin="5, 0, 5, 0"></TextBlock>
+        <TextBox x:Name="NameM" Grid.Row="6" Grid.Column="0" Text="Імя..." FontSize="15" TextAlignment="Center" Margin="5, 0, 5, 0"></TextBox>
+        <TextBox x:Name="FamM" Grid.Row="6" Grid.Column="1" Text="Прізвище..." FontSize="15" TextAlignment="Center" Margin="5, 0, 5, 0"></TextBox>
+        <TextBox x:Name="FauM" Grid.Row="6" Grid.Column="2" Text="По-батькові..." FontSize="15" TextAlignment="Center" Margin="5, 0, 5, 0"></TextBox>
+        
+        <Button Content="Підтверити" FontSize="20" 
+                Background="Bisque" 
+                Foreground="Black" 
+                BorderThickness="2" 
+                BorderBrush="Bisque" 
+                Grid.Row="7" Grid.ColumnSpan="3" Margin="80,0,80,40" VerticalAlignment="Bottom" Click="Confim_Click"></Button>
+    </Grid>
+</Window>
