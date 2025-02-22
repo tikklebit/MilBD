@@ -1,11 +1,9 @@
-namespace MilBD;
-
-internal class MilBaseInfo
+public class MilBaseInfo
 {
-    public string city { get; set; }
-    public string street { get; set; }
-    public string number { get; set; }
-    public string firstname { get; set; }
-    public string lastname { get; set; }
-    public string fatherly { get; set; }
+    public required string City { get; set; }
+    public required string Street { get; set; }
+    public required string Number { get; set; }
+    public required string Firstname { get; set; }
+    public required string Lastname { get; set; }
+    public required string Fatherly { get; set; }
 }
