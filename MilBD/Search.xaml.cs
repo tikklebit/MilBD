@@ -12,6 +12,7 @@ public partial class Search : Window
     
     private void Search_Click(object sender, RoutedEventArgs e)
     {
+        MilBase.Ser();
         MilBase.ShowInfo(InputTextBox.Text);
     }
 }
