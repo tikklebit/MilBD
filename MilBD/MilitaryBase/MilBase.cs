@@ -75,7 +75,7 @@ public class MilBase
         }
     }
 
-    // Видалення зі списку об'єкта, вулиця якого була вказана у стрічуі пошуку
+    // Видаляє зі списку об'єкт, вулиця якого була вказана у полі пошуку
     public void DelInfo(string street)
 {
     if (File.Exists("milBase.json"))
