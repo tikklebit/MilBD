@@ -4,7 +4,7 @@ namespace MilBD;
 
 public partial class Search : Window
 {
-
+    public MilBase _milBase = new MilBase();
     public Search()
     {
         InitializeComponent();
@@ -12,7 +12,11 @@ public partial class Search : Window
     
     private void Search_Click(object sender, RoutedEventArgs e)
     {
-        MilBase.Ser();
-        MilBase.ShowInfo(InputTextBox.Text);
+        _milBase.ShowInfo(SearchTextBox.Text);
+    }
+
+    private void Delete_Click(object sender, RoutedEventArgs e)
+    {
+        _milBase.DelInfo(SearchTextBox.Text);
     }
 }

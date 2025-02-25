@@ -6,9 +6,10 @@ namespace MilBD;
 
 public class MilBase
 {  
-    public static List<MilBaseInfo> info = new List<MilBaseInfo>();
+    private List<MilBaseInfo> _info = new List<MilBaseInfo>();
 
-    public static MilBaseInfo AddMil(string city, string street, string number, string firstName, string lastName, string fatherly)
+    // Додає новий запис у вигляді об'єкта MilBaseInfo
+    public MilBaseInfo AddMil(string city, string street, string number, string firstName, string lastName, string fatherly)
     {
         return new MilBaseInfo
         {
@@ -21,42 +22,84 @@ public class MilBase
         };
     }
     
-    public static void Ad(MilBaseInfo addInfo)
+    // Додає інформацію до списку та зберігає її у файл.
+    public void AddInfo(MilBaseInfo addInfo)
     {
-        info.Add(addInfo);
-    }
-
-    public static void Ser()
-    {
-        string serialized = JsonConvert.SerializeObject(info);
-        
-        File.WriteAllText("milBase.json", serialized);
-    }
-
-    public static MilBaseInfo SearchByStreet(string street)
-    {
-        return info.Find((s => s.Street == street));
-    }
-
-    public static void ShowInfo(string street)
-    {
-        MilBaseInfo? milBase = null;
-        List<MilBaseInfo> milBaseJson =
-            JsonConvert.DeserializeObject<List<MilBaseInfo>>(File.ReadAllText("milBase.json"));
-
-        foreach (var milbase in milBaseJson)
+        // Читає існуючі дані з файлу, якщо такі існують
+        if (File.Exists("milBase.json"))
         {
-            if(milbase.Street == street) milBase = milbase;
+            string json = File.ReadAllText("milBase.json");
+            if (!string.IsNullOrEmpty(json))
+            {
+                _info = JsonConvert.DeserializeObject<List<MilBaseInfo>>(json) ?? new List<MilBaseInfo>();
+            }
         }
-        if (milBase != null)
-         {
-             MessageBox.Show(
-                 $"Місто: {milBase.City}\nВулиця: {milBase.Street}\nБудинок: {milBase.Number}\nІм'я: {milBase.Firstname} {milBase.Fatherly} {milBase.Lastname}",
-                 "Інформація", MessageBoxButton.OK, MessageBoxImage.Information);
-         }
-         else
-         {
-             MessageBox.Show("Об'єкт не знайдено!", "Помилка", MessageBoxButton.OK, MessageBoxImage.Error);
-         }
+        
+        // Додає нову інформацію та зберігає її у файл
+        _info.Add(addInfo);
+        File.WriteAllText("milBase.json", JsonConvert.SerializeObject(_info));
     }
+
+    // Серіалізує список та записує його у файл
+    public void Ser()
+    {
+        File.WriteAllText("milBase.json", JsonConvert.SerializeObject(_info));
+    }
+
+    // Відображає інформацію про об'єкт за вулицею або помилку, якщо об'єкт не знайдено
+    public void ShowInfo(string street)
+    {
+        if (File.Exists("milBase.json"))
+        {
+            string json = File.ReadAllText("milBase.json");
+            List<MilBaseInfo> milBaseJson = string.IsNullOrEmpty(json) 
+                ? new List<MilBaseInfo>() 
+                : JsonConvert.DeserializeObject<List<MilBaseInfo>>(json) ?? new List<MilBaseInfo>();
+
+            // Пошук об'єкта за вулицею
+            var milBase = milBaseJson.Find(mil => mil.Street.Equals(street, StringComparison.OrdinalIgnoreCase));
+            
+            if (milBase != null)
+            {
+                MessageBox.Show($"Місто: {milBase.City}\nВулиця: {milBase.Street}\nБудинок: {milBase.Number}\nІм'я: {milBase.Firstname} {milBase.Fatherly} {milBase.Lastname}",
+                    "Інформація", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("Об'єкт не знайдено!", "Помилка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        else
+        {
+            MessageBox.Show("Файл бази даних не знайдено!", "Помилка", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+    }
+
+    // Видалення зі списку об'єкта, вулиця якого була вказана у стрічуі пошуку
+    public void DelInfo(string street)
+{
+    if (File.Exists("milBase.json"))
+    {
+        string json = File.ReadAllText("milBase.json");
+        List<MilBaseInfo> milBaseJson = string.IsNullOrEmpty(json) 
+            ? new List<MilBaseInfo>() 
+            : JsonConvert.DeserializeObject<List<MilBaseInfo>>(json) ?? new List<MilBaseInfo>();
+
+        var milBase = milBaseJson.Find(mil => mil.Street.Equals(street, StringComparison.OrdinalIgnoreCase));
+
+        if (milBase != null)
+        {
+            milBaseJson.Remove(milBase);
+            File.WriteAllText("milBase.json", JsonConvert.SerializeObject(milBaseJson));
+        }
+        else
+        {
+            MessageBox.Show("Об'єкт не знайдено!", "Помилка", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+    }
+    else
+    {
+        MessageBox.Show("Файл бази даних не знайдено!", "Помилка", MessageBoxButton.OK, MessageBoxImage.Error);
+    }
+}
 }

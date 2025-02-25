@@ -4,6 +4,7 @@ namespace MilBD;
 
 public partial class NewMIL : Window
 {
+    public MilBase _milBase = new MilBase();
     public NewMIL()
     {
         InitializeComponent();
@@ -11,8 +12,8 @@ public partial class NewMIL : Window
 
     private void Confim_Click(object sender, RoutedEventArgs e)
     {
-        var mil = MilBase.AddMil(City.Text, Street.Text, Number.Text, NameM.Text, FamM.Text, FauM.Text);
-        MilBase.Ad(mil);
+        var mil = _milBase.AddMil(City.Text, Street.Text, Number.Text, NameM.Text, FamM.Text, FauM.Text);
+        _milBase.AddInfo(mil);
         this.Close();
     }
 }

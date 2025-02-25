@@ -8,13 +8,18 @@
         Title="Пошук" Height="450" Width="800">
     <Grid>
         <StackPanel>
-            <TextBox x:Name="InputTextBox" Width="200" Margin="10" />
-            <ListBox x:Name="SuggestionsListBox" Width="200" Margin="10" />
-            <Button x:Name="Button" Content="Пошук" FontSize="15" Width="100" Height="30"
+            <TextBox x:Name="SearchTextBox" Width="200" Margin="10" />
+            <ListBox x:Name="SearchListBox" Width="200" Margin="10" />
+            <Button x:Name="SearchButton" Content="Пошук" FontSize="15" Width="100" Height="30"
                     Background="Bisque" 
                     Foreground="Black" 
                     BorderThickness="2" 
                     BorderBrush="Bisque" Click="Search_Click"></Button>
+            <Button x:Name="DeleteButton" Content="Видалити" FontSize="15" Width="100" Height="30"
+                    Background="Bisque" 
+                    Foreground="Black" 
+                    BorderThickness="2" 
+                    BorderBrush="Bisque" Click="Delete_Click"></Button>
         </StackPanel>
     </Grid>
 </Window>
