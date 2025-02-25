@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Reflection;
 using System.Windows.Documents;
 
 namespace MilBD
@@ -9,6 +10,17 @@ namespace MilBD
         public MainWindow()
         {
             InitializeComponent();
+            DisplayVersion();
+        }
+        
+        private void DisplayVersion()
+        {
+            // Получение версии сборки из AssemblyInfo
+            Version? version = Assembly.GetEntryAssembly()?.GetName().Version;
+            string? versionString = version?.ToString();
+
+            // Вывод версии в TextBlock (предполагается, что TextBlock с именем versionTextBlock есть в XAML)
+            Author.Text = $"Version {versionString} Beta";
         }
 
         private void CreateMil_Click(object sender, RoutedEventArgs e)

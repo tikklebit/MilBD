@@ -39,7 +39,6 @@
                 BorderBrush="Bisque" 
                 Margin="30,0,30,30" Click="Search_Click"></Button>
         
-        <TextBlock Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Right">Створено студентом К-313 групи
-        | Ваюта І. А.</TextBlock>
+        <TextBlock Name="Author" Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Right"></TextBlock>
     </Grid>
 </Window>
